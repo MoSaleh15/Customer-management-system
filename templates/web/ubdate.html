@@ -1,0 +1,23 @@
+{% extends 'baes.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container bg-light shadow-md p.5 form-layouyt">
+    <h1>Ubdate Record </h1>
+    
+    <hr style="border: 1px solid #fffefe; margin: 30px 180px;">
+    <form method="POST">
+    
+        {% csrf_token %}
+    
+        {{ form|crispy }}
+     <div class="text-center">
+        <br>
+    
+        <button type="submit" class="btn btn-outline-primary">Ubdate Record</button>
+     </div>
+    
+    </form>
+
+{% endblock %}

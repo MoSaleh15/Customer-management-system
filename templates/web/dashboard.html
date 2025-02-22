@@ -1,0 +1,73 @@
+{% extends 'baes.html' %}
+
+{% block content %}
+    <h3 style="padding-left: 50px;">Welcome to the dashboard page, <b>{{user}}! 👏​</b></h3>
+    <br>
+<hr style="border: 1px solid #fffefe; margin: 20px 50px;">
+<div  style="padding-left: 80px;">
+  <a href="{% url 'record' %}" class="btn btn-outline-primary">Create Record <i class="fa fa-plus" aria-hidden="true"></i>
+  </a>
+</div>
+<hr style="border: 1px solid #fffefe; margin: 20px 50px;">
+
+{% include 'parts/alerts.html' %}
+
+<div class="text-center" style="margin: 0px 100px;">
+  <form action="{% url 'search' %}" method="GET">
+    <input type="search" name="qeury" placeholder="Write Something Her" class="form-control rm-sm-2">
+    &nbsp;
+    <button type="submit" class="btn btn-outline-primary w-100 btn-block p-2">Search</button>
+  </form>
+</div>
+<hr style="border: 1px solid #fffefe; margin: 20px 50px;">
+<div class="text-center" style="padding: 50px;" >
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First_name</th>
+        <th scope="col">Last_name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Tall</th>
+        <th scope="col">Wedgit</th>
+        <th scope="col">Adrees</th>
+        <th scope="col">Date</th>
+        <th scope="col">View</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if record %}
+        {% for record in record %}
+      <tr>
+        <td>{{record.id}}</td>
+        <td>{{record.first_name}}</td>
+        <td>{{record.last_name}}</td>
+        <td>{{record.category}}</td>
+        <td>{{record.phone}}</td>
+        <td>{{record.tall}}</td>
+        <td>{{record.wedgit}}</td>
+        <td>{{record.adrees}}</td>
+        <td>{{record.create_at}}</td>
+        <td><a href="{% url 'view' record.id %} " class="btn btn-outline-primary btn-sm">view</a></td>
+      </tr>
+        {% endfor %} 
+      {% else %}
+      <tr>
+        <td colspan="110" class="text-center">
+          <br><br>
+              <div class="alert alert-warning" role="alert">
+      <b>You Don't Have Any Record Yet.</b>
+    </div>
+        </td>
+            
+
+      </tr>
+
+        
+        {% endif %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

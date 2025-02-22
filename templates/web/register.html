@@ -1,0 +1,29 @@
+{% extends 'baes.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container bg-light shadow-md p.5 form-layouyt">
+<h1>Create Your Account </h1>
+
+<hr>
+<form method="POST", autocomplete="off">
+
+    {% csrf_token %}
+
+    {{ form|crispy }}
+    <br>
+    <button type="submit" class="btn btn-outline-primary">Register <i class="fa fa-registered" aria-hidden="true"></i></button>
+
+
+</form>
+
+
+
+
+
+
+
+</div>
+
+{% endblock %}

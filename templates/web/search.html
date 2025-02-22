@@ -1,0 +1,54 @@
+{% extends 'baes.html' %}
+
+{% block content %}
+
+<div class="text-center" style="padding: 50px;" >
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">First_name</th>
+          <th scope="col">Last_name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Tall</th>
+          <th scope="col">Wedgit</th>
+          <th scope="col">Adrees</th>
+          <th scope="col">Date</th>
+          <th scope="col">View</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if result %}
+          {% for record in result %}
+        <tr>
+          <td>{{record.id}}</td>
+          <td>{{record.first_name}}</td>
+          <td>{{record.last_name}}</td>
+          <td>{{record.category}}</td>
+          <td>{{record.phone}}</td>
+          <td>{{record.tall}}</td>
+          <td>{{record.wedgit}}</td>
+          <td>{{record.adrees}}</td>
+          <td>{{record.create_at}}</td>
+          <td><a href="{% url 'view' record.id %} " class="btn btn-outline-primary btn-sm">view</a></td>
+        </tr>
+          {% endfor %} 
+        {% else %}
+        <tr>
+          <td colspan="110" class="text-center">
+            <br><br>
+               <div class="alert alert-warning" role="alert">
+        <b>Not Found "{{qeury}}"</b>
+      </div>
+          </td>
+              
+  
+        </tr>
+  
+          
+          {% endif %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
